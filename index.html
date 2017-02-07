@@ -1,0 +1,69 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Shadowrun Anarchy Encounter Tracker</title>
+        <meta name="description" content="Encounter tracker for Shadowrun Anarchy">
+        <meta name="author" content="Robert Thayer">
+
+        <link rel="stylesheet" href="css/stylesheet.css">
+
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <h1><img src="img/shadowrun.png"> <span style='color: yellow'>Anarchy</span> Encounter Tracker</h1>
+        <script src="js/diceroller.js"></script>
+        <script src="js/character.js"></script>
+        <div name="DiceRoller" class="entry">
+            <form id="diceroller">
+                <label class="entryHeader">Dice Roller</label> Dice: <input type="number" min="0" max="25" name="dice"> 
+                Reroll: <input type="number" min="0" max="10" name="reroll"> 
+                Glitch Die: 
+                <label class="switch">
+                    <input type="checkbox" name="glitch">
+                    <div class="slider round"></div>
+                </label>
+                Pre-Edge: 
+                <label class="switch">
+                    <input type="checkbox" name="preedge">
+                    <div class="slider round"></div>
+                </label>
+                <input type="button" name="submit" onclick="submitRoll()" value="submit">
+            </form>
+            <div id="lastRoll"></div>
+            <div id="postEdge"></div>
+        </div>
+        <div name="npcEntry" class="entry">
+            <form id="npcEntry">
+                <label class="entryHeader">New Entry</label> 
+                Name: <input type="text" name="name"> 
+                Physical CM: <input type="number" min="0" max="20" name="phys"> 
+                Stun CM: <input type="number" min="0" max="20" name="stun"> 
+                Armor: <input type="number" min="0" max="20" name="armor"> 
+                Damage Mitigation: <input type="number" min="0" max="20" name="mitigation">  
+                <input type="button" name="submit" onclick="submitnpc()" value="submit">
+            </form>
+        </div>
+        <div name="takeDamageEntry" class="entry">
+            <form id="takeDamageEntry">
+                <label class="entryHeader">Assign Damage</label> 
+                Input the damage to assign and click "Take Damage" button on NPC to damage.<br>
+                Damage: <input type="number" min="0" max="20" name="damage">
+                Damage Type: (Stun  
+                <label class="switch">
+                    <input type="checkbox" name="type">
+                    <div class="slider round"></div>
+                </label> Physical)
+                Armor Avoidance: <input type="number" min="0" max="20" name="aa">
+            </form>
+        </div>
+        <div name="npcArea">
+            <div id="npcArea"  class="flex-container"></div>
+        </div>
+    </body>
+</html>
