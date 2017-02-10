@@ -12,9 +12,7 @@
  * Feb 2, 2017
  *
  * @todo
- * - Add High Pain Tolerance toggle
  * - Add server side verification
- * - Add Low Pain Tolerance toggle
  */
 
 /**
@@ -36,14 +34,17 @@ var list = [];
  *  Amount of damage mitigation NPC has
  * @param {string} name
  *  Name of the NPC. This must be unique
+ * @param {string} tolerance
+ *  Either High / Low / None for Pain tolerance quality
  */
 
-function npc(armor, phys, stun, mitigation, name) {
+function npc(armor, phys, stun, mitigation, name, tolerance) {
     this.maxArmor = armor;
     this.maxPhysCM = phys;
     this.maxStunCM = stun;
     this.mitigation = mitigation;
     this.name = name;
+    this.tolerance = tolerance;
     
     // currentxxx variables hold the NPC's current damage status
     this.currentPhys = 0;
@@ -51,10 +52,18 @@ function npc(armor, phys, stun, mitigation, name) {
     this.currentArmor = 0;
     
     // calculates the current wound modifier. Bases off of wound for every 3 damage.
-    // TO BE UPDATED: Need to check qualities/shadow amps to see if any change this number
-    // High Pain Tolerance - Does not take dice penalties for damage until second row of damage boxes is filled. 
     this.woundModifier = function () {
-        return (Math.floor(this.currentPhys / 3) + Math.floor(this.currentStun / 3));
+        var phys = Math.floor(this.currentPhys / 3),
+            stun = Math.floor(this.currentStun / 3),
+            base = phys + stun;
+        if (this.tolerance == "High") {
+            if (stun == 1) { stun = 0; }
+            if (phys == 1) { phys = 0; }
+            base = phys + stun;
+        } else if (this.tolerance == "Low") {
+            if (base > 0) { base++; }
+        }
+        return base;
     };
     
     // Holds the checkboxes for damage
@@ -331,7 +340,8 @@ function submitnpc() {
         mitigation = 0,
         phys = 0,
         stun = 0,
-        name = "";
+        name = "",
+        tolerance = "";
     for (var i = 0; i < form.length; i++) {
         var element = form.elements[i];
         switch (element.name) {
@@ -361,11 +371,14 @@ function submitnpc() {
                 break;
             case "submit":
                 break;
+            case "tolerance":
+                tolerance = document.querySelector('input[name = "tolerance"]:checked').value;
+                break;
             default:
                 alert("What are you trying to pull!?")
         }
     }
-    var newNPC = new npc(armor, phys, stun, mitigation, name);
+    var newNPC = new npc(armor, phys, stun, mitigation, name, tolerance);
     list.push(newNPC);
 }
 
