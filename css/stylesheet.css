@@ -11,6 +11,14 @@ body {
     text-align: center;
 }
 
+footer {
+    display:block;
+}
+
+footer a {
+    color:yellow;
+}
+
 .entryHeader {
     font-weight: bold;
     font-size: 1.1em;
