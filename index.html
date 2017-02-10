@@ -45,7 +45,14 @@
                 Physical CM: <input type="number" min="0" max="20" name="phys"> 
                 Stun CM: <input type="number" min="0" max="20" name="stun"> 
                 Armor: <input type="number" min="0" max="20" name="armor"> 
-                Damage Mitigation: <input type="number" min="0" max="20" name="mitigation">  
+                Damage Mitigation: <input type="number" min="0" max="20" name="mitigation">
+                Pain Tolerance: 
+                <input type="radio" name="tolerance" id="tolNone" value="None" checked="checked">
+                <label for="tolNone">None</label>
+                <input type="radio" name="tolerance" id="tolHigh" value="High">
+                <label for="tolHigh">High</label>
+                <input type="radio" name="tolerance" id="tolLow" value="Low">
+                <label for="tolLow">Low</label>
                 <input type="button" name="submit" onclick="submitnpc()" value="submit">
             </form>
         </div>
