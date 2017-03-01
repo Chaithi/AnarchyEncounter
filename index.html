@@ -7,9 +7,9 @@
         <title>Shadowrun Anarchy Encounter Tracker</title>
         <meta name="description" content="Encounter tracker for Shadowrun Anarchy">
         <meta name="author" content="Robert Thayer">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/stylesheet.css">
-
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
         <!--[if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <![endif]-->
@@ -19,7 +19,7 @@
         <h1><img src="img/shadowrun.png"> <span style='color: yellow'>Anarchy</span> Encounter Tracker</h1>
         <script src="js/diceroller.js"></script>
         <script src="js/character.js"></script>
-        <div name="DiceRoller" class="entry">
+        <div name="DiceRoller" class="w3-container entry">
             <form id="diceroller">
                 <label class="entryHeader">Dice Roller</label> Dice: <input type="number" min="0" max="25" name="dice"> 
                 Reroll: <input type="number" min="0" max="10" name="reroll"> 
@@ -38,7 +38,7 @@
             <div id="lastRoll"></div>
             <div id="postEdge"></div>
         </div>
-        <div name="npcEntry" class="entry">
+        <div name="npcEntry" class="w3-container entry">
             <form id="npcEntry">
                 <label class="entryHeader">New Entry</label> 
                 Name: <input type="text" name="name"> 
@@ -56,7 +56,7 @@
                 <input type="button" name="submit" onclick="submitnpc()" value="submit">
             </form>
         </div>
-        <div name="takeDamageEntry" class="entry">
+        <div name="takeDamageEntry" class="w3-container entry">
             <form id="takeDamageEntry">
                 <label class="entryHeader">Assign Damage</label> 
                 Input the damage to assign and click "Take Damage" button on NPC to damage.<br>
@@ -69,12 +69,12 @@
                 Armor Avoidance: <input type="number" min="0" max="20" name="aa">
             </form>
         </div>
-        <div name="npcArea">
+        <div name="w3-container npcArea">
             <div id="npcArea"  class="flex-container"></div>
         </div>
     </body>
     <footer class="footer">
-      <div class="container">
+      <div class="w3-container container">
         <p class="text-muted">Site designed by <a href="/rob.php">Robert Thayer</a>. <a href="https://paypal.me/kitsucoon" target="_blank">Buy Me a Chai Tea</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
       </div>
     </footer>
